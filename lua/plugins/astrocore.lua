@@ -1,9 +1,5 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
-
 -- AstroCore provides a central place to modify mappings, vim options, autocommands, and more!
 -- Configuration documentation can be found with `:h astrocore`
--- NOTE: We highly recommend setting up the Lua Language Server (`:LspInstall lua_ls`)
---       as this provides autocomplete and documentation while editing
 
 ---@type LazySpec
 return {
@@ -29,14 +25,31 @@ return {
       opt = { -- vim.opt.<key>
         relativenumber = true, -- sets vim.opt.relativenumber
         number = true, -- sets vim.opt.number
-        spell = false, -- sets vim.opt.spell
-        signcolumn = "auto", -- sets vim.opt.signcolumn to auto
-        wrap = false, -- sets vim.opt.wrap
+        -- signcolumn = "auto", -- sets vim.opt.signcolumn to auto
+        scrolloff = 10,
+        spell = true, -- sets vim.opt.spell
+        wrap = true, -- sets vim.opt.wrap
+        swapfile = false,
       },
       g = { -- vim.g.<key>
         -- configure global vim variables (vim.g)
         -- NOTE: `mapleader` and `maplocalleader` must be set in the AstroNvim opts or before `lazy.setup`
         -- This can be found in the `lua/lazy_setup.lua` file
+        --
+        -- https://github.com/alvan/vim-closetag
+        closetag_filenames = "*.html,*.html.erb",
+        closetag_filetypes = "html,eruby",
+
+        tokyonight_style = "storm", -- "night", storm", "day"
+
+        -- vim-visual-multi
+        -- Ctrl+Down and Ctrl+Up were mapped to adding cursors, but that conflicts with my split navigation
+        VM_maps = {
+          ["Add Cursor Down"] = "<M-Down>",
+          ["Add Cursor Up"] = "<M-Up>",
+        },
+
+        ["test#strategy"] = "toggleterm",
       },
     },
     -- Mappings can be configured through AstroCore as well.
@@ -47,8 +60,14 @@ return {
         -- second key is the lefthand side of the map
 
         -- navigate buffer tabs with `H` and `L`
-        L = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
-        H = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
+        -- L = {
+        --   function() require("astrocore.buffer").nav(vim.v.count > 0 and vim.v.count or 1) end,
+        --   desc = "Next buffer",
+        -- },
+        -- H = {
+        --   function() require("astrocore.buffer").nav(-(vim.v.count > 0 and vim.v.count or 1)) end,
+        --   desc = "Previous buffer",
+        -- },
 
         -- mappings seen under group name "Buffer"
         ["<Leader>bD"] = {

@@ -1,9 +1,75 @@
-if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
-
 -- AstroLSP allows you to customize the features in AstroNvim's LSP configuration engine
 -- Configuration documentation can be found with `:h astrolsp`
--- NOTE: We highly recommend setting up the Lua Language Server (`:LspInstall lua_ls`)
---       as this provides autocomplete and documentation while editing
+
+-- TODO: remove this when vim 0.10.0 is released
+-- textDocument/diagnostic support until 0.10.0 is released
+local timers = {}
+local function setup_diagnostics(client, buffer)
+  if require("vim.lsp.diagnostic")._enable then return end
+
+  local diagnostic_handler = function()
+    local params = vim.lsp.util.make_text_document_params(buffer)
+    client.request("textDocument/diagnostic", { textDocument = params }, function(err, result)
+      if err then
+        local err_msg = string.format("diagnostics error - %s", vim.inspect(err))
+        vim.lsp.log.error(err_msg)
+      end
+      local diagnostic_items = {}
+      if result then diagnostic_items = result.items end
+      vim.lsp.diagnostic.on_publish_diagnostics(
+        nil,
+        vim.tbl_extend("keep", params, { diagnostics = diagnostic_items }),
+        { client_id = client.id }
+      )
+    end)
+  end
+
+  diagnostic_handler() -- to request diagnostics on buffer when first attaching
+
+  vim.api.nvim_buf_attach(buffer, false, {
+    on_lines = function()
+      if timers[buffer] then vim.fn.timer_stop(timers[buffer]) end
+      timers[buffer] = vim.fn.timer_start(200, diagnostic_handler)
+    end,
+    on_detach = function()
+      if timers[buffer] then vim.fn.timer_stop(timers[buffer]) end
+    end,
+  })
+end
+
+-- adds ShowRubyDeps command to show dependencies in the quickfix list.
+-- add the `all` argument to show indirect dependencies as well
+local function add_ruby_deps_command(client, bufnr)
+  vim.api.nvim_buf_create_user_command(bufnr, "ShowRubyDeps", function(opts)
+    local params = vim.lsp.util.make_text_document_params()
+
+    local showAll = opts.args == "all"
+
+    client.request("rubyLsp/workspace/dependencies", params, function(error, result)
+      if error then
+        print("Error showing deps: " .. error)
+        return
+      end
+
+      local qf_list = {}
+      for _, item in ipairs(result) do
+        if showAll or item.dependency then
+          table.insert(qf_list, {
+            text = string.format("%s (%s) - %s", item.name, item.version, item.dependency),
+
+            filename = item.path,
+          })
+        end
+      end
+
+      vim.fn.setqflist(qf_list)
+      vim.cmd "copen"
+    end, bufnr)
+  end, {
+    nargs = "?",
+    complete = function() return { "all" } end,
+  })
+end
 
 ---@type LazySpec
 return {
@@ -41,10 +107,62 @@ return {
     -- enable servers that you already have installed without mason
     servers = {
       -- "pyright"
+      -- "tailwindcss",
+      -- "solargraph",
+      -- "ruby_ls",
+      -- "html",
     },
     -- customize language server configuration options passed to `lspconfig`
     ---@diagnostic disable: missing-fields
     config = {
+      solargraph = {
+        autoformat = true,
+        completion = true,
+        -- useBundler = true,
+        diagnostic = true,
+        logLevel = "debug",
+        folding = true,
+        references = true,
+        formatting = true,
+        rename = true,
+        symbols = true,
+      },
+      html = {
+        filetypes = { "html", "eruby" },
+        init_options = {
+          provideFormatter = false,
+          embeddedLanguages = { css = true, javascript = true, ruby = true },
+          configurationSection = { "html", "css", "javascript", "eruby", "ruby" },
+        },
+      },
+      ruby_ls = {
+        -- cmd = { 'ruby-lsp' },
+        on_attach = function(client, buffer)
+          client.server_capabilities.semanticTokensProvider = nil
+          setup_diagnostics(client, buffer)
+          add_ruby_deps_command(client, buffer)
+        end,
+      },
+      tailwindcss = {
+        settings = {
+          tailwindCSS = {
+            experimental = {
+              classRegex = {
+                "class: \"|'([^\"|']*)",
+              },
+            },
+          },
+        },
+      },
+      lua_ls = {
+        settings = {
+          Lua = {
+            diagnostics = {
+              global = { "vim" },
+            },
+          },
+        },
+      },
       -- clangd = { capabilities = { offsetEncoding = "utf-8" } },
     },
     -- customize how language servers are attached
