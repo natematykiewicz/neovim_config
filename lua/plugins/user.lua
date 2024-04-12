@@ -270,14 +270,6 @@ return {
   },
 
   {
-    "stevearc/oil.nvim",
-    lazy = false,
-    opts = {},
-    enabled = true,
-    cmd = "Oil",
-  },
-
-  {
     "mfussenegger/nvim-dap",
     dependencies = { "suketa/nvim-dap-ruby", config = true },
   },
