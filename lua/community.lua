@@ -21,6 +21,7 @@ return {
   { import = "astrocommunity.project.nvim-spectre" },
   { import = "astrocommunity.scrolling.mini-animate" },
   { import = "astrocommunity.utility.noice-nvim" },
+  { import = "astrocommunity.color.nvim-highlight-colors" },
   -- { import = "astrocommunity.workflow.hardtime-nvim" },
   -- { import = "astrocommunity.code-runner.overseer-nvim" },
   { import = "astrocommunity.colorscheme.catppuccin" },
