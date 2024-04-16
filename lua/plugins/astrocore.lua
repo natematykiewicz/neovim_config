@@ -69,6 +69,16 @@ return {
         --   desc = "Previous buffer",
         -- },
 
+        ["\\"] = { "<cmd>Neotree toggle<cr>", desc = "Toggle Explorer" },
+        ["<leader>sw"] = { [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]], desc = "Substiture word" },
+
+        [",fp"] = { ":let @+ = expand('%:p')<CR>", desc = "Copy file path" },
+        [",fn"] = { ":let @+ = expand('%:n')<CR>", desc = "Copy file name" },
+
+        -- Make page up and down center on the screen
+        ["<C-d>"] = { "<C-d>zz" },
+        ["<C-u>"] = { "<C-u>zz" },
+
         -- mappings seen under group name "Buffer"
         ["<Leader>bD"] = {
           function()
@@ -84,9 +94,19 @@ return {
         -- quick save
         -- ["<C-s>"] = { ":w!<cr>", desc = "Save File" },  -- change description but the same command
       },
+
       t = {
         -- setting a mapping to false will disable it
         -- ["<esc>"] = false,
+      },
+
+      v = { -- Move visually selected lines up and down
+        ["J"] = { ":m '>+1<CR>gv=gv" },
+        ["K"] = { ":m '<-2<CR>gv=gv" },
+      },
+
+      x = {
+        ["<leader>P"] = { [["_dP]], desc = "Paste without copying what you pasted over" },
       },
     },
   },
