@@ -138,7 +138,7 @@ return {
       ruby_ls = {
         -- cmd = { 'ruby-lsp' },
         on_attach = function(client, buffer)
-          client.server_capabilities.semanticTokensProvider = nil
+          -- client.server_capabilities.semanticTokensProvider = nil
           setup_diagnostics(client, buffer)
           add_ruby_deps_command(client, buffer)
         end,
