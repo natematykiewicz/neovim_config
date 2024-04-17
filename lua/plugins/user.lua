@@ -77,16 +77,6 @@ return {
     config = function() vim.fn["mkdp#util#install"]() end,
   },
 
-  {
-    "mfussenegger/nvim-lint",
-    config = function()
-      require("lint").linters_by_ft = {
-        ruby = { "ruby" },
-      }
-    end,
-    ft = { "ruby" },
-  },
-
   -- { "mihyaeru21/nvim-lspconfig-bundler", dependencies = "neovim/nvim-lspconfig" },
   { "tpope/vim-rails", ft = { "ruby", "eruby" } },
   { "tpope/vim-bundler", ft = { "ruby", "eruby" } },
