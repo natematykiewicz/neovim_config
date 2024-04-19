@@ -24,15 +24,25 @@ return {
   { import = "astrocommunity.color.nvim-highlight-colors" },
   -- { import = "astrocommunity.workflow.hardtime-nvim" },
   -- { import = "astrocommunity.code-runner.overseer-nvim" },
+
   { import = "astrocommunity.colorscheme.catppuccin" },
-  { import = "astrocommunity.colorscheme.tokyonight-nvim" },
   {
-    "folke/tokyonight.nvim",
+    "catppuccin",
     opts = {
-      style = "storm",
-      dim_inactive = true,
+      dim_inactive = {
+        enabled = true,
+      },
     },
   },
+
+  -- { import = "astrocommunity.colorscheme.tokyonight-nvim" },
+  -- {
+  --   "folke/tokyonight.nvim",
+  --   opts = {
+  --     style = "storm",
+  --     dim_inactive = true,
+  --   },
+  -- },
 
   { import = "astrocommunity.bars-and-lines.smartcolumn-nvim" },
   {

@@ -7,7 +7,7 @@ return {
   ---@type AstroUIOpts
   opts = {
     -- change colorscheme
-    colorscheme = "tokyonight",
+    colorscheme = "catppuccin-mocha",
     -- AstroUI allows you to easily modify highlight groups easily for any and all colorschemes
     highlights = {
       init = { -- this table overrides highlights in all themes
@@ -20,7 +20,7 @@ return {
     status = {
       -- -- Customize different separators between sections
       separators = {
-        tab = { "", "" },
+        -- tab = { "", "" },
       },
     },
     -- Icons can be configured throughout the interface
