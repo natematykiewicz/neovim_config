@@ -42,13 +42,6 @@ return {
 
         tokyonight_style = "storm", -- "night", storm", "day"
 
-        -- vim-visual-multi
-        -- Ctrl+Down and Ctrl+Up were mapped to adding cursors, but that conflicts with my split navigation
-        VM_maps = {
-          ["Add Cursor Down"] = "<M-Down>",
-          ["Add Cursor Up"] = "<M-Up>",
-        },
-
         ["test#strategy"] = "toggleterm",
       },
     },

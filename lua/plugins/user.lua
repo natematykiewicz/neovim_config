@@ -82,7 +82,6 @@ return {
   { "tpope/vim-bundler", ft = { "ruby", "eruby" } },
   { "tpope/vim-surround", lazy = false },
   { "kchmck/vim-coffee-script", ft = { "coffee" } },
-  { "mg979/vim-visual-multi", event = "User AstroFile" },
 
   { "ThePrimeagen/vim-be-good", cmd = "VimBeGood" },
 
