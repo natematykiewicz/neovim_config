@@ -109,7 +109,7 @@ return {
       -- "pyright"
       -- "tailwindcss",
       -- "solargraph",
-      -- "ruby_ls",
+      -- "ruby_lsp",
       -- "html",
     },
     -- customize language server configuration options passed to `lspconfig`
@@ -135,7 +135,7 @@ return {
           configurationSection = { "html", "css", "javascript", "eruby", "ruby" },
         },
       },
-      ruby_ls = {
+      ruby_lsp = {
         -- cmd = { 'ruby-lsp' },
         on_attach = function(client, buffer)
           -- client.server_capabilities.semanticTokensProvider = nil
