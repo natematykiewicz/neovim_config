@@ -23,6 +23,7 @@ return {
     -- vim options can be configured here
     options = {
       opt = { -- vim.opt.<key>
+        conceallevel = 1,
         relativenumber = true, -- sets vim.opt.relativenumber
         number = true, -- sets vim.opt.number
         -- signcolumn = "auto", -- sets vim.opt.signcolumn to auto

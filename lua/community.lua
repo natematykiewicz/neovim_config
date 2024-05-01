@@ -14,6 +14,7 @@ return {
   { import = "astrocommunity.git.openingh-nvim" },
   { import = "astrocommunity.motion.harpoon" },
   { import = "astrocommunity.pack.html-css" },
+  { import = "astrocommunity.pack.markdown" },
   { import = "astrocommunity.lsp.actions-preview-nvim" },
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.pack.tailwindcss" },
