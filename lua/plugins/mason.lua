@@ -12,6 +12,7 @@ return {
         "lua_ls",
         "ruby_lsp",
         "dockerls",
+        "sorbet",
       })
     end,
   },
@@ -28,6 +29,7 @@ return {
         "tailwindcss",
         "ruby_lsp",
         "dockerls",
+        "sorbet",
       })
     end,
   },

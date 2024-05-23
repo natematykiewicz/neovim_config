@@ -106,6 +106,12 @@ return {
           add_ruby_deps_command(client, buffer)
         end,
       },
+      sorbet = {
+        root_dir = function(fname)
+          local root_pattern = require("lspconfig").util.root_pattern "sorbet/config"
+          return root_pattern(fname)
+        end,
+      },
       tailwindcss = {
         settings = {
           tailwindCSS = {
