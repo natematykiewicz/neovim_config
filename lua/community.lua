@@ -43,7 +43,7 @@ return {
         indent_blankline = true,
         markdown = true,
         mason = true,
-        native_lsp = true,
+        native_lsp = { enabled = true },
         neotree = true,
         neotest = true,
         notify = true,
