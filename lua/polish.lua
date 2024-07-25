@@ -48,7 +48,6 @@ vim.filetype.add {
     ["html.erb"] = "eruby",
   },
   filename = {
-    ["Gemfile.lock"] = "ruby",
     ["Capfile"] = "ruby",
     ["Guardfile"] = "ruby",
     ["Vagrantfile"] = "ruby",
