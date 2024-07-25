@@ -45,11 +45,6 @@ return {
       enable = true,
     }
 
-    opts.autotag = {
-      enable = true,
-      filetypes = { "html", "xml", "eruby" },
-    }
-
     opts.indent = {
       enable = true,
     }
