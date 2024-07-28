@@ -20,7 +20,7 @@ return {
   { import = "astrocommunity.pack.tailwindcss" },
   { import = "astrocommunity.pack.typescript" },
   { import = "astrocommunity.pack.yaml" },
-  { import = "astrocommunity.project.nvim-spectre" },
+  { import = "astrocommunity.search.nvim-spectre" },
   { import = "astrocommunity.scrolling.mini-animate" },
   { import = "astrocommunity.utility.noice-nvim" },
   { import = "astrocommunity.color.nvim-highlight-colors" },
