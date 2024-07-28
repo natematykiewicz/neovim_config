@@ -63,14 +63,14 @@ return {
     },
   },
 
-  -- { import = "astrocommunity.colorscheme.tokyonight-nvim" },
-  -- {
-  --   "folke/tokyonight.nvim",
-  --   opts = {
-  --     style = "storm",
-  --     dim_inactive = true,
-  --   },
-  -- },
+  { import = "astrocommunity.colorscheme.tokyonight-nvim" },
+  {
+    "folke/tokyonight.nvim",
+    opts = {
+      style = "moon",
+      dim_inactive = true,
+    },
+  },
 
   { import = "astrocommunity.bars-and-lines.smartcolumn-nvim" },
   {
