@@ -3,6 +3,32 @@
 
 -- adds ShowRubyDeps command to show dependencies in the quickfix list.
 -- add the `all` argument to show indirect dependencies as well
+
+local function tprint(tbl, indent)
+  if not indent then indent = 0 end
+  local toprint = string.rep(" ", indent) .. "{\r\n"
+  indent = indent + 2
+  for k, v in pairs(tbl) do
+    toprint = toprint .. string.rep(" ", indent)
+    if type(k) == "number" then
+      toprint = toprint .. "[" .. k .. "] = "
+    elseif type(k) == "string" then
+      toprint = toprint .. k .. "= "
+    end
+    if type(v) == "number" then
+      toprint = toprint .. v .. ",\r\n"
+    elseif type(v) == "string" then
+      toprint = toprint .. '"' .. v .. '",\r\n'
+    elseif type(v) == "table" then
+      toprint = toprint .. tprint(v, indent + 2) .. ",\r\n"
+    else
+      toprint = toprint .. '"' .. tostring(v) .. '",\r\n'
+    end
+  end
+  toprint = toprint .. string.rep(" ", indent - 2) .. "}"
+  return toprint
+end
+
 local function add_ruby_deps_command(client, bufnr)
   vim.api.nvim_buf_create_user_command(bufnr, "ShowRubyDeps", function(opts)
     local params = vim.lsp.util.make_text_document_params()
@@ -95,9 +121,61 @@ return {
         },
       },
       ruby_lsp = {
-        -- cmd = { 'ruby-lsp' },
+        -- commands = {
+        --   ["rubyLsp.openFile"] = {
+        --     ---@param command lsp.Command
+        --     ---@param ctx table
+        --     function(command, ctx)
+        --       vim.notify(command.command)
+        --       vim.notify(command.title)
+        --       vim.notify(command.arguments[0])
+        --
+        --       for key, value in ctx do
+        --         vim.notify(string.format("%s: %s", key, value))
+        --       end
+        --     end,
+        --   },
+        -- },
+        -- init_options = {
+        --   featuresConfiguration = {
+        --     inlayHint = {
+        --       -- enableAll = true,
+        --     },
+        --   },
+        -- },
+        commands_created = true,
         on_attach = function(client, buffer)
-          -- client.server_capabilities.semanticTokensProvider = nil
+          client.commands["rubyLsp.openFile"] = function(command)
+            local uri = command.arguments[1][1]
+            local path = uri:gsub("^file://", "")
+
+            vim.cmd("e " .. path)
+          end
+
+          client.commands["rubyLsp.runTask"] = function(command)
+            local shell_command = command.arguments[1]
+            vim.notify("Running: " .. shell_command)
+            vim.cmd "split"
+            vim.cmd("terminal " .. shell_command)
+          end
+
+          client.commands["rubyLsp.runTest"] = function(command, context)
+            require("neotest").run.run()
+            vim.notify(tprint(command))
+            vim.notify(tprint(context))
+          end
+
+          client.commands["rubyLsp.runTestInTerminal"] = function(command)
+            local shell_command = command.arguments[3]
+            vim.cmd "split"
+            vim.cmd("terminal " .. shell_command)
+          end
+
+          client.commands["rubyLsp.debugTest"] = function(command, context)
+            vim.notify(tprint(command))
+            vim.notify(tprint(context))
+          end
+
           add_ruby_deps_command(client, buffer)
         end,
       },
