@@ -55,7 +55,7 @@ return {
       -- disable = { "ruby", "eruby", "embedded_template" },
 
       -- Necessary for ``
-      additional_vim_regex_highlighting = true,
+      -- additional_vim_regex_highlighting = true,
     }
   end,
 }
