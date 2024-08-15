@@ -20,7 +20,7 @@ return {
     status = {
       -- -- Customize different separators between sections
       separators = {
-        -- tab = { "", "" },
+        tab = { "", "" },
       },
     },
     -- Icons can be configured throughout the interface
