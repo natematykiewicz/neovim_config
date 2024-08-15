@@ -25,7 +25,7 @@ vim.cmd "hi! link @field @variable.member"
 vim.cmd "hi! link @type.ruby Constant"
 
 -- Change semantic token color
-vim.cmd "hi! link @lsp.type.namespace.ruby Constant"
+vim.cmd "hi! link @lsp.type.namespace.ruby Type"
 
 -- TODO: fix this
 -- vim.api.nvim_create_autocmd("BufWritePost", {
