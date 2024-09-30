@@ -63,6 +63,13 @@ return {
       dim_inactive = {
         enabled = true,
       },
+      custom_highlights = function(colors)
+        return {
+          -- revert https://github.com/catppuccin/nvim/pull/768
+          -- I feel like overlay2 is far too bright for a comment
+          Comment = { fg = colors.overlay0 },
+        }
+      end,
     },
   },
 
