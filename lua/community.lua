@@ -27,6 +27,7 @@ return {
   { import = "astrocommunity.color.nvim-highlight-colors" },
   { import = "astrocommunity.recipes.telescope-lsp-mappings" },
   { import = "astrocommunity.utility.telescope-live-grep-args-nvim" },
+  { import = "astrocommunity.fuzzy-finder.telescope-zoxide" },
   -- { import = "astrocommunity.workflow.hardtime-nvim" },
   -- { import = "astrocommunity.code-runner.overseer-nvim" },
 
