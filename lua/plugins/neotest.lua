@@ -140,6 +140,10 @@ return {
           end,
         },
       }
+
+      opts.discovery = {
+        filter_dir = function(name, _rel_path, _root) return name ~= "vendor" end,
+      }
     end,
     config = function(_, opts)
       vim.diagnostic.config({
