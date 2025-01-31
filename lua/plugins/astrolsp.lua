@@ -113,7 +113,7 @@ return {
         symbols = true,
       },
       html = {
-        filetypes = { "html", "eruby" },
+        filetypes = { "html", "eruby", "eruby.html" },
         init_options = {
           provideFormatter = false,
           embeddedLanguages = { css = true, javascript = true, ruby = true },
