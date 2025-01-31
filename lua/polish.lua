@@ -10,22 +10,22 @@
 
 -- Make Ruby instance variables and class variables highlight better
 -- https://github.com/tree-sitter/tree-sitter-ruby/issues/184
-vim.cmd "hi! link @label.ruby @property"
+-- vim.cmd "hi! link @label.ruby @property"
 
 -- Better differentiate Ruby symbols from other syntax
 -- This also makes JS rest parameters and Ruby keyword arguments the same color
-vim.cmd "hi! link @symbol.ruby @variable.parameter"
+-- vim.cmd "hi! link @symbol.ruby @variable.parameter"
 
 -- This fixes something that broke in Toykonight 3.0
 -- Keyword args and symbols were being highlighted purple. It's possible this will
 -- be unnecessary when I upgrade to Neovim 0.10.
 -- Also, lua hash keys became purple instead of teal
-vim.cmd "hi! link Identifier @variable.parameter"
-vim.cmd "hi! link @field @variable.member"
-vim.cmd "hi! link @type.ruby Constant"
+-- vim.cmd "hi! link Identifier @variable.parameter"
+-- vim.cmd "hi! link @field @variable.member"
+-- vim.cmd "hi! link @type.ruby Constant"
 
 -- Change semantic token color
-vim.cmd "hi! link @lsp.type.namespace.ruby Type"
+-- vim.cmd "hi! link @lsp.type.namespace.ruby Type"
 
 -- TODO: fix this
 -- vim.api.nvim_create_autocmd("BufWritePost", {
