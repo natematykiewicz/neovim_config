@@ -54,6 +54,7 @@ return {
         notify = true,
         octo = true,
         semantic_tokens = true,
+        snacks = true,
         symbols_outline = true,
         telescope = true,
         treesitter = true,

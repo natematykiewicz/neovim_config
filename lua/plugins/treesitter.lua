@@ -4,10 +4,9 @@
 return {
   "nvim-treesitter/nvim-treesitter",
   dependencies = { "nvim-ts-autotag", "RRethy/nvim-treesitter-endwise" },
-  opts = function(_, opts)
-    -- add more things to the ensure_installed table protecting against community packs modifying it
-    opts.auto_install = true
-    opts.ensure_installed = require("astrocore").list_insert_unique(opts.ensure_installed, {
+  opts = {
+    auto_install = true,
+    ensure_installed = {
       "bash",
       "c",
       "css",
@@ -35,27 +34,22 @@ return {
       "vimdoc",
       "xml",
       "yaml",
-    })
+    },
 
-    opts.rainbow = {
+    rainbow = {
       enable = false,
-    }
+    },
 
-    opts.endwise = {
+    indent = {
       enable = true,
-    }
+    },
 
-    opts.indent = {
-      enable = true,
-    }
-
-    opts.highlight = {
+    highlight = {
       enable = true,
       disable = { "gitcommit" },
-      -- disable = { "ruby", "eruby", "embedded_template" },
 
       -- Necessary for ``
       -- additional_vim_regex_highlighting = true,
-    }
-  end,
+    },
+  },
 }

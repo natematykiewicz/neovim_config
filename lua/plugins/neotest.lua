@@ -63,7 +63,7 @@ return {
           }
           maps.n["[T"] = {
             function() require("neotest").jump.prev() end,
-            desc = "Previous test",
+            desc = "Previou test",
           }
 
           local watch_prefix = prefix .. "W"

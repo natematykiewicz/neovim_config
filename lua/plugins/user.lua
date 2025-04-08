@@ -1,4 +1,5 @@
 -- You can also add or configure plugins by creating files in this `plugins/` folder
+-- PLEASE REMOVE THE EXAMPLES YOU HAVE NO INTEREST IN BEFORE ENABLING THIS FILE
 -- Here are some examples:
 
 ---@type LazySpec
@@ -6,26 +7,28 @@ return {
 
   -- == Examples of Overriding Plugins ==
 
-  -- customize alpha options
+  -- customize dashboard options
   {
-    "goolord/alpha-nvim",
-    opts = function(_, opts)
-      -- customize the dashboard header
-      opts.section.header.val = {
-        " █████  ███████ ████████ ██████   ██████",
-        "██   ██ ██         ██    ██   ██ ██    ██",
-        "███████ ███████    ██    ██████  ██    ██",
-        "██   ██      ██    ██    ██   ██ ██    ██",
-        "██   ██ ███████    ██    ██   ██  ██████",
-        " ",
-        "    ███    ██ ██    ██ ██ ███    ███",
-        "    ████   ██ ██    ██ ██ ████  ████",
-        "    ██ ██  ██ ██    ██ ██ ██ ████ ██",
-        "    ██  ██ ██  ██  ██  ██ ██  ██  ██",
-        "    ██   ████   ████   ██ ██      ██",
-      }
-      return opts
-    end,
+    "folke/snacks.nvim",
+    opts = {
+      dashboard = {
+        preset = {
+          header = table.concat({
+            " █████  ███████ ████████ ██████   ██████ ",
+            "██   ██ ██         ██    ██   ██ ██    ██",
+            "███████ ███████    ██    ██████  ██    ██",
+            "██   ██      ██    ██    ██   ██ ██    ██",
+            "██   ██ ███████    ██    ██   ██  ██████ ",
+            "",
+            "███    ██ ██    ██ ██ ███    ███",
+            "████   ██ ██    ██ ██ ████  ████",
+            "██ ██  ██ ██    ██ ██ ██ ████ ██",
+            "██  ██ ██  ██  ██  ██ ██  ██  ██",
+            "██   ████   ████   ██ ██      ██",
+          }, "\n"),
+        },
+      },
+    },
   },
 
   -- You can also easily customize additional setup of plugins that is outside of the plugin's setup call
@@ -261,31 +264,6 @@ return {
   {
     "mfussenegger/nvim-dap",
     dependencies = { "suketa/nvim-dap-ruby", config = true },
-  },
-
-  { -- override nvim-cmp plugin
-    "hrsh7th/nvim-cmp",
-    -- override the options table that is used in the `require("cmp").setup()` call
-    opts = function(_, opts)
-      -- opts parameter is the default options table
-      -- the function is lazy loaded so cmp is able to be required
-      local cmp = require "cmp"
-      -- modify the sources part of the options table
-      opts.sources = cmp.config.sources {
-        -- Default:
-        -- { name = "nvim_lsp", priority = 1000 },
-        -- { name = "luasnip", priority = 750 },
-        -- { name = "buffer", priority = 500 },
-        -- { name = "path", priority = 250 },
-        { name = "buffer", priority = 1000 },
-        { name = "nvim_lsp", priority = 750 },
-        { name = "luasnip", priority = 500 },
-        { name = "path", priority = 250 },
-      }
-
-      -- return the new table to be used
-      return opts
-    end,
   },
 
   -- {
