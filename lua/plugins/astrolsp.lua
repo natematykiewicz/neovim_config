@@ -93,7 +93,7 @@ return {
       -- "tailwindcss",
       -- "solargraph",
       -- "ruby_lsp",
-      -- "sorbet",
+      "sorbet",
       -- "html",
     },
     -- customize language server configuration options passed to `lspconfig`

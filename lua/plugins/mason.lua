@@ -19,7 +19,7 @@ return {
         "html-lsp",
         "lua-language-server",
         "ruby-lsp",
-        "sorbet",
+        -- "sorbet",
         "stylua",
         "tailwindcss-language-server",
       },
