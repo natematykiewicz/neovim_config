@@ -179,6 +179,8 @@ return {
         end,
       },
       sorbet = {
+        mason = false,
+        cmd = { "bin/srb", "tc", "--lsp" },
         root_dir = function(fname)
           local root_pattern = require("lspconfig").util.root_pattern "sorbet/config"
           return root_pattern(fname)
