@@ -16,6 +16,7 @@ return {
         "tree-sitter-cli",
 
         "dockerfile-language-server",
+        "herb-language-server",
         "html-lsp",
         "lua-language-server",
         "ruby-lsp",
