@@ -28,6 +28,11 @@ return {
           }, "\n"),
         },
       },
+      win = {
+        wo = {
+          spell = false,
+        },
+      },
     },
   },
 
