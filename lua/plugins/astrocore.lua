@@ -68,6 +68,7 @@ return {
     filetypes = {
       -- see `:h vim.filetype.add` for usage
       extension = {
+        rbi = "ruby",
         jbuilder = "ruby",
         ["html.erb"] = "eruby",
       },
