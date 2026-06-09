@@ -90,6 +90,7 @@ return {
   { "tpope/vim-bundler", ft = { "ruby", "eruby" } },
   { "tpope/vim-surround", lazy = false },
   { "kchmck/vim-coffee-script", ft = { "coffee" } },
+  { "jidn/vim-dbml", ft = "dbml" },
 
   { "ThePrimeagen/vim-be-good", cmd = "VimBeGood" },
 
