@@ -41,6 +41,8 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+vim.o.guifont = "MonoLisa:h11"
+
 -- Delete trailing whitespace on save
 vim.api.nvim_create_autocmd({ "BufWritePre" }, {
   pattern = { "*" },
