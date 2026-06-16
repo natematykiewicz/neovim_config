@@ -182,10 +182,8 @@ return {
       sorbet = {
         mason = false,
         cmd = { "bin/srb", "tc", "--lsp" },
-        root_dir = function(fname)
-          local root_pattern = require("lspconfig").util.root_pattern "sorbet/config"
-          return root_pattern(fname)
-        end,
+        filetypes = { "ruby" },
+        root_markers = { "sorbet" },
       },
       tailwindcss = {
         settings = {
