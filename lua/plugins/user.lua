@@ -124,13 +124,6 @@ return {
   { "mattn/emmet-vim" },
   { "dmmulroy/ts-error-translator.nvim" },
 
-  {
-    "psliwka/vim-dirtytalk",
-    build = ":DirtytalkUpdate",
-    config = function() vim.opt.spelllang = { "en", "programming" } end,
-    event = "User AstroFile",
-  },
-
   { "gpanders/editorconfig.nvim" },
 
   {
