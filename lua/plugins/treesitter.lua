@@ -43,17 +43,7 @@ return {
         "yaml",
       },
 
-      rainbow = {
-        enable = false,
-      },
-
-      highlight = {
-        enable = true,
-        disable = { "gitcommit" },
-
-        -- Necessary for ``
-        -- additional_vim_regex_highlighting = true,
-      },
+      highlight = function(lang) return lang ~= "gitcommit" end,
     },
   },
 }
