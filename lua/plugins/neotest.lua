@@ -131,12 +131,15 @@ return {
         require "neotest-rspec",
         require "neotest-minitest" {
           test_cmd = function()
-            return vim.tbl_flatten {
-              "bundle",
-              "exec",
-              "rails",
-              "test",
-            }
+            return vim
+              .iter({
+                "bundle",
+                "exec",
+                "rails",
+                "test",
+              })
+              :flatten()
+              :totable()
           end,
         },
       }
