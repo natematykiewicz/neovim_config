@@ -1,8 +1,5 @@
 -- Customize Mason
 
--- TODO:
--- Get sorbet, ruby lsp, erb lint, to work via Neovim
-
 ---@type LazySpec
 return {
   -- use mason-tool-installer for automatically installing Mason packages
