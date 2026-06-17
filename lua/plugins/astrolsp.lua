@@ -196,6 +196,15 @@ return {
           },
         },
       },
+      yamlls = {
+        settings = {
+          yaml = {
+            format = {
+              singleQuote = true,
+            },
+          },
+        },
+      },
       lua_ls = {
         settings = {
           Lua = {
